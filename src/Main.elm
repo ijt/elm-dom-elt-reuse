@@ -2,7 +2,8 @@ port module Main exposing (..)
 
 import Browser
 import Html exposing (..)
-import Html.Attributes exposing (id)
+import Html.Attributes as Attribute exposing (id, style)
+import Html.Events exposing (onClick)
 
 
 
@@ -76,13 +77,39 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
     div []
-        [ div [ id "counter1" ]
-            [ text "0"
-            ]
-        , div [ id "counter2" ]
-            [ text "0"
-            ]
+        [ button [ onClick ToggleLayout ] [ text "Toggle Layout" ]
+        , counters model
         ]
+
+
+counters : Model -> Html Msg
+counters model =
+    case model.layout of
+        Column ->
+            div []
+                [ div [] [ counter1 ]
+                , div [] [ counter2 ]
+                ]
+
+        Row ->
+            div [] [ counter1, spacer, counter2 ]
+
+
+spacer : Html Msg
+spacer =
+    text " "
+
+
+counter2 : Html Msg
+counter2 =
+    span [ id "counter2" ]
+        [ text "0" ]
+
+
+counter1 : Html Msg
+counter1 =
+    span [ id "counter1" ]
+        [ text "0" ]
 
 
 port startCounters : () -> Cmd msg
