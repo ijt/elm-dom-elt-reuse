@@ -4,7 +4,7 @@ This is an exploration to find out how to make Elm reuse DOM elements.
 To see the issue
 
 1. Run `make`
-2. Open static/index.html
+2. Open `static/index.html`
 3. Notice the counters steadily increasing.
 4. Press the Toggle Layout button
 5. Notice that the counters get reset to zero and no longer get incremented.
