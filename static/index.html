@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <style>body { padding: 0; margin: 0; }</style>
+</head>
+
+<body>
+
+<pre id="elm"></pre>
+
+<script src="Main.js"></script>
+<script>
+  window.app = Elm.Main.init( { node: document.getElementById("elm") } );
+
+  window.app.ports.startCounters.subscribe(function() {
+    let c1 = document.getElementById("counter1");
+    let c2 = document.getElementById("counter2");
+    function increment(e) {
+      let n = parseInt(e.innerText);
+      e.innerText = n + 1;
+    }
+    requestAnimationFrame(function() {
+      setInterval(function() {
+        increment(c1);
+        increment(c2);
+      }, 100)
+    })
+  });
+</script>
+
+</body>
+</html>
