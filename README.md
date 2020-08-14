@@ -1,4 +1,4 @@
-# Getting Elm to reuse DOM elements
+# Issue trying to get Elm to reuse DOM elements
 This is an exploration to find out how to make Elm reuse DOM elements.
 
 To see the issue
