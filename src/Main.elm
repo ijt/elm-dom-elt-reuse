@@ -6,10 +6,6 @@ import Html.Attributes as Attribute exposing (id, style)
 import Html.Events exposing (onClick)
 
 
-
--- MAIN
-
-
 main =
     Browser.element
         { init = init
@@ -17,10 +13,6 @@ main =
         , update = update
         , subscriptions = subscriptions
         }
-
-
-
--- MODEL
 
 
 type alias Model =
@@ -35,10 +27,6 @@ type Layout
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { layout = Row }, startCounters () )
-
-
-
--- UPDATE
 
 
 type Msg
@@ -61,17 +49,9 @@ update msg model =
             ( { model | layout = l2 }, Cmd.none )
 
 
-
--- SUBSCRIPTIONS
-
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
-
-
-
--- VIEW
 
 
 view : Model -> Html Msg
@@ -100,15 +80,15 @@ spacer =
     text " "
 
 
-counter2 : Html Msg
-counter2 =
-    span [ id "counter2" ]
-        [ text "0" ]
-
-
 counter1 : Html Msg
 counter1 =
     span [ id "counter1" ]
+        [ text "0" ]
+
+
+counter2 : Html Msg
+counter2 =
+    span [ id "counter2" ]
         [ text "0" ]
 
 
