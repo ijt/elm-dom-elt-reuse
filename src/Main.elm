@@ -64,31 +64,33 @@ view model =
 
 counters : Model -> Html Msg
 counters model =
-    case model.layout of
-        Column ->
-            div []
-                [ div [] [ counter1 ]
-                , div [] [ counter2 ]
-                ]
+    let
+        d =
+            case model.layout of
+                Column ->
+                    "column"
 
-        Row ->
-            div [] [ counter1, spacer, counter2 ]
-
-
-spacer : Html Msg
-spacer =
-    text " "
+                Row ->
+                    "row"
+    in
+    div
+        [ style "flex-direction" d
+        , style "display" "flex"
+        ]
+        [ counter1
+        , counter2
+        ]
 
 
 counter1 : Html Msg
 counter1 =
-    span [ id "counter1" ]
+    span [ id "counter1", style "padding" "8px" ]
         [ text "0" ]
 
 
 counter2 : Html Msg
 counter2 =
-    span [ id "counter2" ]
+    span [ id "counter2", style "padding" "8px" ]
         [ text "0" ]
 
 
