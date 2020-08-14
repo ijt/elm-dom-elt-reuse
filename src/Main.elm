@@ -1,9 +1,8 @@
-module Main exposing (..)
+port module Main exposing (..)
 
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (id)
-import Task
 
 
 
@@ -34,7 +33,7 @@ type Layout
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { layout = Row }, Cmd.none )
+    ( { layout = Row }, startCounters () )
 
 
 
@@ -78,9 +77,12 @@ view : Model -> Html Msg
 view model =
     div []
         [ div [ id "counter1" ]
-            [ text "counter 1"
+            [ text "0"
             ]
         , div [ id "counter2" ]
-            [ text "counter 2"
+            [ text "0"
             ]
         ]
+
+
+port startCounters : () -> Cmd msg
